@@ -19,6 +19,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_assert_raises(self):
         self.assertRaises(ValueError, int, "a")
+        self.assertRaises(IndexError, [].pop, 0)
 
     def test_assert_raises_alternative(self):
         with self.assertRaises(AttributeError):
@@ -33,6 +34,50 @@ class MyTestCase(unittest.TestCase):
         expected = {'a': 'b', 'c': 'd', 'e': 'f'}
         actual = {'a': 'b', 'c': 'd', 'e': 'f'}
         self.assertDictEqual(expected, actual)
+
+    def test_assert_true(self):
+        self.assertTrue(1)
+        self.assertTrue("Hello")
+
+    def test_assert_false(self):
+        self.assertFalse(0)
+        self.assertFalse("")
+
+    def test_assert_greater(self):
+        self.assertGreater(2, 1)
+
+    def test_assert_greater_equal(self):
+        self.assertGreaterEqual(2, 2)
+
+    def test_assert_in(self):
+        self.assertIn(1, [1, 2, 3])
+
+    def test_assert_is(self):
+        self.assertIs(1, 1)
+
+    def test_assert_is_instance(self):
+        self.assertIsInstance(1, int)
+
+    def test_assert_not_is_instance(self):
+        self.assertNotIsInstance({}, set)
+
+    def test_assert_is_none(self):
+        self.assertIsNone(None)
+
+    def test_assert_is_not(self):
+        self.assertIsNot([], [])
+
+    def test_assert_is_not_none(self):
+        self.assertIsNotNone(1)
+
+    def test_assert_less(self):
+        self.assertLess(1, 2)
+
+    def test_assert_less_equal(self):
+        self.assertLessEqual(2, 2)
+
+    def test_assert_count_equal(self):
+        self.assertCountEqual([1, 2, 3], [1, 3, 2])
 
 
 if __name__ == '__main__':
