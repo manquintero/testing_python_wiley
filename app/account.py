@@ -15,3 +15,17 @@ class Account:
     def get_account_name(self):
         """ Queries using the handler """
         return self.data_interface.get_name()
+
+    def get_account(self):
+        """ Always throws error """
+        try:
+            result = self.data_interface.get()
+        except AccountException:
+            result = "Connection error occurred"
+
+        return result
+
+
+class AccountException(Exception):
+    """ Dummy Exception """
+    pass

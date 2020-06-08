@@ -3,7 +3,7 @@ import unittest
 
 from mock import Mock
 
-from app.account import Account
+from app.account import Account, AccountException
 
 
 class MyTestCase(unittest.TestCase):
@@ -15,6 +15,7 @@ class MyTestCase(unittest.TestCase):
         mock_data_interface = Mock()
         mock_data_interface.get_id.return_value = '1'
         mock_data_interface.get_name.return_value = 'test'
+        mock_data_interface.get.side_effect = AccountException()
         self.account = Account(mock_data_interface)
 
     def test_account_returns_data_for_id(self):
@@ -24,6 +25,10 @@ class MyTestCase(unittest.TestCase):
     def test_account_returns_data_for_name(self):
         """ Simple Test for NAME """
         self.assertEqual(self.account_data["name"], self.account.get_account_name())
+
+    def test_account_when_connect_exception_raised(self):
+        """ Raises Exception """
+        self.assertEqual("Connection error occurred", self.account.get_account())
 
 
 if __name__ == '__main__':  # pragma: no cover
