@@ -14,7 +14,7 @@ class TestCalculate(unittest.TestCase):
         self.calculator = Calculate()
 
     def test_add_method_return_correct(self):
-        """Test the happy path, sum of two integers"""
+        """ Test the happy path, sum of two integers """
         self.assertEqual(4, self.calculator.add(2, 2))
 
     def test_add_method_return_failure(self):
@@ -37,5 +37,17 @@ class TestCalculate(unittest.TestCase):
         """Send no integers"""
         self.assertRaises(TypeError, self.calculator.add)
 
-if __name__ == '__main__':
+    def test_subtract_return_correct(self):
+        """ Test the happy path, substract of two integers """
+        self.assertEqual(4, self.calculator.subtract(10, 6))
+
+    def test_subtract_method_raises_typeerror_if_no_first_int(self):
+        """Send no integers"""
+        self.assertRaises(TypeError, self.calculator.subtract, "Hello", 4)
+
+    def test_subtract_method_raises_typeerror_if_no_second_int(self):
+        """Send no integers"""
+        self.assertRaises(TypeError, self.calculator.subtract, 4, "Hello")
+
+if __name__ == '__main__':  # pragma: no cover
     unittest.main()

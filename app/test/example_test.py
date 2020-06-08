@@ -80,5 +80,5 @@ class MyTestCase(unittest.TestCase):
         self.assertCountEqual([1, 2, 3], [1, 3, 2])
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':  # pragma: no cover
     unittest.main()
