@@ -49,5 +49,6 @@ class TestCalculate(unittest.TestCase):
         """Send no integers"""
         self.assertRaises(TypeError, self.calculator.subtract, 4, "Hello")
 
+
 if __name__ == '__main__':  # pragma: no cover
     unittest.main()
